@@ -1,0 +1,84 @@
+.product-container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .product-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background: #008873;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+
+    .product-list {
+        margin-top: 20px;
+    
+        .product-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f9f9f9;
+            margin-bottom: 10px;
+    
+            .product-image {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+    
+            .product-info {
+                flex-grow: 1;
+                padding-left: 10px;
+            }
+    
+            .product-actions {
+                display: flex;
+                flex-direction: column; // Hiển thị nút theo cột
+                gap: 5px;
+    
+                button {
+                    padding: 5px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    width: 60px;
+                    text-align: center;
+                }
+    
+                .edit-btn {
+                    background: #007BFF;
+                    color: white;
+                }
+    
+                .delete-btn {
+                    background: #dc3545;
+                    color: white;
+                }
+            }
+        }
+    }
+}    

@@ -1,0 +1,41 @@
+@use 'sass:map';
+@use '../../../../style/pages/theme' as *;
+
+.breadcrum {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0 5px;
+    line-height: 30px;
+    background: #008874;
+
+    .breadcrum__text {
+        color: white;
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        ul {
+            display: flex;
+            list-style: none;
+            column-gap: 10px;
+
+            li {
+                color: rgb(241, 181, 15);
+                font-weight: bold;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                }
+
+                :hover {
+                    color: rgb(241, 181, 15);
+
+                }
+            }
+        }
+    }
+}
