@@ -1,23 +1,25 @@
 @use '../../../style/pages/responsive' as *;
 .container__categories__slider {
-    max-width: 1220px !important; /* Định chiều rộng của slider */
-    margin-top: 30px !important; /* Khoảng cách giữa slider và phần tử trên */
+    max-width: 1220px !important; 
+    margin-top: 30px !important; 
     .categories__slider {
         .categories__slider__item {
             width: 100% !important;
-            height: 300px; /* Định chiều cao của từng slide */
-            position: relative; /* Định vị tuyệt đối cho các phần tử con */
-            background-size: cover; /* Hình ảnh lấp đầy khung nhưng giữ tỷ lệ */
-            background-position: top center; /* Căn giữa ảnh */
-            background-repeat: no-repeat; /* Không lặp lại ảnh */
-            border-radius: 10px; /* Bo góc ảnh */
+            height: 300px; 
+            position: relative; 
+            background-size: cover; 
+            background-position: top center; 
+            background-repeat: no-repeat; 
+            border-radius: 10px; 
             flex: 1;
         }
         p{
-            position: absolute; /* Định vị tuyệt đối cho các phần tử con */
-            left: 15%; /* Đẩy văn bản về giữa */
-            bottom: 20px; /* Đẩy văn bản về dưới */
-            text-align: center; /* Căn giữa văn bản */
+            position: absolute; 
+            left: 15%;
+            bottom: 0; 
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center; 
             font-size: 18px;
             font-weight: 700;
             text-transform: uppercase;
@@ -26,7 +28,7 @@
             width: 200px;
             cursor: pointer;
             &:hover{
-                background-color: rgba(0, 0, 0, 0.5);
+                background-color:#008874;
                 color: white;
             }
         }

@@ -8,11 +8,11 @@ const Footer = () => {
           <div className="row">
           <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <div className="footer__about">
-              <h2 className="footer__about__logo">DUCCUONGSHOP</h2>
+              <h2 className="footer__about__logo">GreenMart Shop</h2>
               <ul>
                 <li>Địa chỉ: 47 ngõ 132 Khương Trung</li>
                 <li>Phone: 0777-903-759</li>
-                <li>Email: Duccuongshop@gmail.com</li>
+                <li>Email: GreenMartShop@gmail.com</li>
               </ul>
             </div>
           </div>

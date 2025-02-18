@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom"; 
+import { Link, useLocation, useNavigate,generatePath   } from "react-router-dom"; 
 import "./header.scss";
 import { FaSquareFacebook, FaSquareInstagram } from "react-icons/fa6";
 import { MdOutlineEmail, MdOutlineMenu } from "react-icons/md";
@@ -9,13 +9,21 @@ import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 import { ROUTERS } from "../../../../utils/router";
 
 
-export   const categories = [
-  "Thịt tươi",
-  "Rau củ tươi",
-  "Hoa quả",
-  "Nước trái cây",
-  "Hải sản",
+// export   const categories = [
+//   "Thịt tươi",
+//   "Rau củ tươi",
+//   "Hoa quả",
+//   "Nước trái cây",
+//   "Hải sản",
 
+// ];
+
+export const categories = [
+  { id: 1, name: "Thịt tươi" },
+  { id: 2, name: "Hoa quả" },
+  { id: 3, name: "Nước trái cây" },
+  { id: 4, name: "Rau củ tươi" },
+  { id: 5, name: "Hải sản" },
 ];
 
 const Header = () => {
@@ -33,19 +41,21 @@ const Header = () => {
     },
     {
       name: "Cửa hàng",
-      path: "",
+      path: ROUTERS.USER.PRODUCTPAGES,
     },
     {
       name: "Sản phẩm",
-      path: "",
+      path: "#",
       isShowSub: false,
       child: [
-        { name: "Thịt", path: "" },
-        { name: "Rau củ", path: "" },
-        { name: "Nước uống", path: "" },
+        { name: "Thịt tươi", path: generatePath(ROUTERS.USER.PRODUCTS, { id: 1 }) },
+  { name: "Hoa quả", path: generatePath(ROUTERS.USER.PRODUCTS, { id: 2 }) },
+  { name: "Nước trái cây", path: generatePath(ROUTERS.USER.PRODUCTS, { id: 3 }) },
+  { name: "Rau củ", path: generatePath(ROUTERS.USER.PRODUCTS, { id: 4 }) },
+  { name: "Hải sản", path: generatePath(ROUTERS.USER.PRODUCTS, { id: 5 }) },
       ],
     },
-    { name: "Bài viết", path: "" },
+    { name: "Bài viết", path: ROUTERS.USER.Article },
     { name: "Liên hệ", path: "" },
   ]);
 
@@ -62,7 +72,7 @@ const Header = () => {
 
       <div className={`open__menu__wrapper${isShowOpenMenu ? " show" : ""}`}>
         <div className="header__logo">
-          <h1>DucCuongShop</h1>
+          <h1>GreenMart Shop</h1>
         </div>
         <div className="open__menu__cart">
           <ul>
@@ -129,7 +139,7 @@ const Header = () => {
           <ul>
             <li>
               <MdOutlineEmail />
-              duccuongshop@gmail.com
+              GreenMartShop@gmail.com
             </li>
           </ul>
         </div>
@@ -139,7 +149,7 @@ const Header = () => {
           <div className="row">
             <div className="col-lg-6 header_top_left">
               <ul>
-                <li><MdOutlineEmail /> DucCuongshop@gmail.com</li>
+                <li><MdOutlineEmail /> GreenMartShop@gmail.com</li>
                 <li>Mua nhiều giảm giá</li>
               </ul>
             </div>
@@ -161,14 +171,14 @@ const Header = () => {
         <div className="row">
           <div className="col-lg-3">
             <div className="header__logo ml-40">
-              <h2>DucCuongshop</h2>
+              <h2>GreenMart Shop</h2>
             </div>
           </div>
           <div className="col-lg-6">
             <nav className="header__menu">
               <ul>
                 {menus?.map((menu, menukey) => (
-                  <li key={menukey} className={menukey === 0 ? "active" : ""}>
+                  <li key={menukey} className={location.pathname === menu.path ? "active" : ""}>
                     <Link to={menu.path}>{menu.name}</Link>
                     {menu.child && (
                       <ul className="header__menu__dropdown">
@@ -219,7 +229,7 @@ const Header = () => {
 
                   {categories.map((category, key) => (
 
-                    <li key={key}><Link to={ROUTERS.USER.PRODUCTS}>{category}</Link></li>
+                    <li key={key}><Link to={generatePath(ROUTERS.USER.PRODUCTS, { id: category.id })}>{category.name}</Link></li>
 
                   ))}
                 </ul>

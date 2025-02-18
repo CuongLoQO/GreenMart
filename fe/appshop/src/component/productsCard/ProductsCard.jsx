@@ -3,11 +3,9 @@ import { FaEye } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { formatter } from "../../utils/formatter.jsx";
 import { ROUTERS } from "utils/router.jsx";
-import { useCart } from "../../context/CartContext";
 import "./productscard.scss";
 
 const ProductsCard = ({ id, img, name, price }) => {
-    const { addToCart } = useCart(); // Lấy hàm addToCart từ Context
 
     return (
         <div className="featured__item pl-pr-10">
@@ -16,7 +14,8 @@ const ProductsCard = ({ id, img, name, price }) => {
             >
                 <ul className='featured__item__pic__hover'>
                     <li>
-                        <FaEye />
+
+                        <Link to={generatePath(ROUTERS.USER.PRODUCT, { id })}><FaEye /></Link>
                     </li>
                     <li>
                         <MdOutlineShoppingCart />
@@ -25,7 +24,7 @@ const ProductsCard = ({ id, img, name, price }) => {
             </div>
             <div className="featured__item__text">
                 <h6>
-                <Link to={generatePath(ROUTERS.USER.PRODUCT, { id })}>{name}</Link>
+                    <Link to={generatePath(ROUTERS.USER.PRODUCT, { id })}>{name}</Link>
                 </h6>
                 <h5>{formatter(price)}</h5>
             </div>

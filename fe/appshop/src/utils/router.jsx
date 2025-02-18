@@ -3,10 +3,12 @@ export const ROUTERS = {
     USER: {
         HOME: "/",
         PROFILE: "/profile",
-        PRODUCTS: "/san-pham",
+        PRODUCTPAGES: "/san-pham",
+        PRODUCTS: "/san-pham/:id",
         PRODUCT: "/san-pham/chi-tiet/:id",
         SHOPPINGCART: "/gio-hang",
         CHECKOUT: "/thanh-toan",
+        Article: "/bai-bao"
 
 
     },

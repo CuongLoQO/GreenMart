@@ -1,5 +1,5 @@
 import BreadCrum from "../theme/breadCrum/BreadCrum";
-import { Link } from "react-router-dom";
+import { Link, useParams,generatePath } from "react-router-dom";
 import ProductsCard from 'component/productsCard/ProductsCard';
 import "./productspage.scss"
 import { categories } from "../theme/header/Header";
@@ -8,17 +8,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 const API_URL = "http://localhost:5000/api/products";
 const BASE_URL = "http://localhost:5000";
-
-
-
-import meatbo from 'assets/user/images/featured/feature-1.jpg';
-import bapcai from 'assets/user/images/featured/feature-2.jpg';
-import buoi from 'assets/user/images/featured/feature-3.jpg';
-import fish from 'assets/user/images/featured/feature-4.jpg';
-import meatpig from 'assets/user/images/featured/feature-5.jpg';
-import oi from 'assets/user/images/featured/feature-6.jpg';
-import suhao from 'assets/user/images/featured/feature-7.jpg';
-
+const APICATE_URL = "http://localhost:5000/api/categories";
 
 const ProductsPage = () => {
   const sorts = [
@@ -29,59 +19,64 @@ const ProductsPage = () => {
     "Bán chạy nhất",
     "Đang giảm giá",
   ];
-  // const products = [
-  //   {
-  //     img: meatbo,
-  //     name: "Thị bò",
-  //     price: "240000",
-  //   },
-  //   {
-  //     img: bapcai,
-  //     name: "Bắp cải",
-  //     price: "12000",
-  //   },
-  //   {
-  //     img: buoi,
-  //     name: "Bưởi",
-  //     price: "15000",
-  //   },
-  //   {
-  //     img: meatpig,
-  //     name: "Thịt lợn",
-  //     price: "130000",
-  //   },
-  //   {
-  //     img: fish,
-  //     name: "Cá hồi",
-  //     price: "140000",
-  //   },
-  //   {
-  //     img: oi,
-  //     name: "Ổi",
-  //     price: "25000",
-  //   },
-  //   {
-  //     img: suhao,
-  //     name: "Su hào",
-  //     price: "30000",
-  //   }
-  // ];
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetchProducts();
-}, []);
 
-const fetchProducts = async () => {
-    try {
-        const response = await axios.get(API_URL);
-        setProducts(response.data);
-    } catch (error) {
-        console.error("Lỗi khi tải sản phẩm:", error);
+  const { id } = useParams(); // Lấy id danh mục từ URL
+  const [products, setProducts] = useState([]);
+
+  let NameCategory = "";
+  switch (parseInt(id)) {
+    case 1:
+      NameCategory = "Thịt tươi";
+      break;
+    case 2:
+      NameCategory = "Hoa quả";
+      break;
+    case 3:
+      NameCategory = "Nước trái cây";
+      break;
+    case 4:
+      NameCategory = "Rau củ tươi";
+      break;
+    case 5:
+      NameCategory = "Hải sản";
+      break;
+    default:
+      NameCategory = "Danh mục khác";
+  }
+
+
+
+
+  useEffect(() => {
+    if (id >= 1 && id <= 5) {
+      fetchProductsByCategory(id);
+    } else {
+      fetchAllProducts();
     }
-};
+  }, [id]);
+
+  const fetchProductsByCategory = async (categoryId) => {
+    try {
+      const response = await axios.get(`${APICATE_URL}/${categoryId}/products`);
+      setProducts(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Lỗi khi tải sản phẩm:", error);
+    }
+  };
+  const fetchAllProducts = async () => {
+    try {
+      const response = await axios.get(API_URL);
+      setProducts(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Lỗi khi tải tất cả sản phẩm:", error);
+    }
+  };
+
   return (
     <div>
-      <BreadCrum name="Danh sách sản phẩm" />
+      <BreadCrum name={`Danh sách sản phẩm - ${NameCategory}`} />
       <div className="container sider">
         <div className="row">
           <div className="col-lg-3 col-md-12 col-sm-12">
@@ -118,9 +113,9 @@ const fetchProducts = async () => {
                 <h2>Thể loại khác</h2>
                 <ul>
                   {
-                    categories.map((name, key) => (
+                    categories.map((category, key) => (
                       <li key={key}>
-                        <Link to={ROUTERS.USER.HOME}>{name}</Link>
+                        <Link to={generatePath(ROUTERS.USER.PRODUCTS, { id: category.id })}>{category.name}</Link>
                       </li>
                     ))
                   }

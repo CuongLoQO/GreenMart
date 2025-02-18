@@ -11,30 +11,34 @@ import CheckOutPage from './pages/users/checkoutPage/CheckOutPage';
 import LoginPage from './pages/admin/loginPage/LoginPage';
 import OrderPage from './pages/admin/orderPage/OrderPage'
 import ProductPage from './pages/admin/productPage/ProductPage';
-import { CartProvider } from "./context/CartContext";
+import ArticlePage from './pages/users/articlePage/ArticlePage';
+
 
 
 const RenderUserRoutes = () => {
     const userRouters = [
         { path: ROUTERS.USER.HOME, component: <HomePage /> },
         { path: ROUTERS.USER.PROFILE, component: <ProfilePage /> },
+        { path: ROUTERS.USER.PRODUCTPAGES, component: <ProductsPage /> },
         { path: ROUTERS.USER.PRODUCTS, component: <ProductsPage /> },
         { path: ROUTERS.USER.PRODUCT, component: <ProductDetailPage /> },
         { path: ROUTERS.USER.SHOPPINGCART, component: <ShoppingCartPage /> },
         { path: ROUTERS.USER.CHECKOUT, component: <CheckOutPage /> },
+        { path: ROUTERS.USER.Article, component: <ArticlePage /> },
+
     ];
 
     return (
-        <CartProvider>
 
-            <MasterLayout>
-                <Routes>
-                    {userRouters.map((item, key) => (
-                        <Route key={key} path={item.path} element={item.component} />
-                    ))}
-                </Routes>
-            </MasterLayout>
-        </CartProvider>
+
+        <MasterLayout>
+            <Routes>
+                {userRouters.map((item, key) => (
+                    <Route key={key} path={item.path} element={item.component} />
+                ))}
+            </Routes>
+        </MasterLayout>
+
     );
 };
 
