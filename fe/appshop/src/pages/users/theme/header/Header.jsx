@@ -7,6 +7,8 @@ import { IoCartOutline } from "react-icons/io5";
 import { FaPhoneAlt, FaUserAlt } from "react-icons/fa";
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 import { ROUTERS } from "../../../../utils/router";
+import { useSelector, useDispatch } from 'react-redux';
+import { removeItem, updateQuantity } from '../../../../features/cart/cartSlice.jsx';
 
 
 // export   const categories = [
@@ -32,8 +34,8 @@ const Header = () => {
   const [isShowOpenMenu, setIsShowOpenMenu] = useState(false);
   const [isHome, setIsHome] = useState(location.pathname.length<=1);
   const [isShowCategories, setIsShowCategories] = useState(isHome);
-
-
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const [menus, setMenus] = useState([ 
     {
       name: "Trang chủ",
@@ -79,7 +81,7 @@ const Header = () => {
             <li>
               <Link to={ROUTERS.USER.SHOPPINGCART}>
                 <IoCartOutline />
-                <span>0</span>
+                <span>{totalQuantity}</span>
               </Link>
             </li>
           </ul>
@@ -201,7 +203,7 @@ const Header = () => {
                 <li>
                   <Link to={ROUTERS.USER.SHOPPINGCART}>
                   <IoCartOutline />
-                  <span>0</span>
+                  <span>{totalQuantity}</span>
                   </Link>
                 </li>
               </ul>

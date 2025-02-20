@@ -9,6 +9,7 @@
 }
 
 .product-text__detail{
+    position: relative;
     h2{
         color: #252525;
         font-weight: 700;
@@ -35,6 +36,12 @@
                 }
             }
         }
+    }
+    .btn-submit{
+        height: 50px;
+        position: absolute;
+        top: 50px;
+        left: 150px;
     }
 }
 .product-infor__detail{

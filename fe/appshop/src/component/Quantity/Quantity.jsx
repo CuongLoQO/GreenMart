@@ -1,29 +1,17 @@
-import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./quantity.scss";
 
-const Quantity = () => {
-    const [quantity, setQuantity] = useState(1);
-
-    const handleIncrease = () => {
-        setQuantity((prev) => prev + 1);
-    };
-
-    const handleDecrease = () => {
-        if (quantity > 1) {
-            setQuantity((prev) => prev - 1);
-        }
-    };
+const Quantity = ({ quantity, onIncrease, onDecrease }) => {
+    const location = useLocation();  
+    const isCartPage = location.pathname === "/gio-hang"; // Kiểm tra nếu đang ở trang giỏ hàng
 
     return (
         <div className="container-quantity">
             <div className="quantity">
-                <span className="qtybtn" onClick={handleDecrease}>-</span>
+                <span className="qtybtn" onClick={onDecrease} style={{ cursor: "pointer" }}>-</span>
                 <input type="number" value={quantity} readOnly />
-                <span className="qtybtn" onClick={handleIncrease}>+</span>
+                <span className="qtybtn" onClick={onIncrease} style={{ cursor: "pointer" }}>+</span>
             </div>
-            <button type="submit" className="btn-submit">
-                Thêm giỏ hàng
-            </button>
         </div>
     );
 };

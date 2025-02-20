@@ -4,9 +4,24 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { formatter } from "../../utils/formatter.jsx";
 import { ROUTERS } from "utils/router.jsx";
 import "./productscard.scss";
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { addItem } from '../../features/cart/cartSlice.jsx';
 
 const ProductsCard = ({ id, img, name, price }) => {
-
+    const dispatch = useDispatch();
+    const handleAddToCart = () => {
+        const productToAdd = { id, name, img, price };
+        dispatch(addItem(productToAdd));
+        toast.success(`Đã thêm "${name}" vào giỏ hàng!`, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+    };
     return (
         <div className="featured__item pl-pr-10">
             <div className="featured__item__pic"
@@ -17,7 +32,7 @@ const ProductsCard = ({ id, img, name, price }) => {
 
                         <Link to={generatePath(ROUTERS.USER.PRODUCT, { id })}><FaEye /></Link>
                     </li>
-                    <li>
+                    <li onClick={handleAddToCart}>
                         <MdOutlineShoppingCart />
                     </li>
                 </ul>
