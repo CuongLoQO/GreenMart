@@ -17,7 +17,8 @@ const loadFromLocalStorage = () => {
   const userId = getOrCreateUserId();
   try {
     const serializedState = localStorage.getItem(`cart-${userId}`);
-    return serializedState ? JSON.parse(serializedState) : { userId, items: [] };
+    const parsedState = serializedState ? JSON.parse(serializedState) : [];
+    return { userId, items: Array.isArray(parsedState) ? parsedState : [] };
   } catch (e) {
     console.error('Could not load state from localStorage', e);
     return { userId, items: [] };
@@ -29,7 +30,6 @@ const preloadedState = {
   cart: loadFromLocalStorage(),
 };
 
-// Cấu hình store Redux
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
@@ -38,7 +38,6 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat((store) => (next) => (action) => {
       const result = next(action);
-      // Sau mỗi hành động, lưu lại giỏ hàng vào localStorage
       const state = store.getState();
       const userId = state.cart.userId;
       localStorage.setItem(`cart-${userId}`, JSON.stringify(state.cart.items));

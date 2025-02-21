@@ -1,0 +1,48 @@
+.contact_wrap{
+  // background: #87d3ca;
+}
+
+.contact_container{
+  max-width: 900px !important;
+  margin-top: 50px;
+  // background: #FFFFFF;
+  .header_contact{
+    h2{
+      padding-top: 50px;
+      margin: 20px 0;
+      text-align: center;
+      width: 100%;
+    }
+    p{
+      margin-left: 20px;
+      font-weight: 700;
+
+    }
+  }
+  .infor_contact{
+
+    ul {
+      margin-top: 20px;
+      li{
+      list-style: none;
+      padding: 10px;
+      margin-left: 20px;
+    }
+  }
+  }
+  .form_contact{
+    margin-top: 50px;
+    padding: 20px 30px;
+
+    input{
+      height: 50px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    textarea{
+      height: 200px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}

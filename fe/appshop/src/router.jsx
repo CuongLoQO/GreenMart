@@ -12,6 +12,7 @@ import LoginPage from './pages/admin/loginPage/LoginPage';
 import OrderPage from './pages/admin/orderPage/OrderPage'
 import ProductPage from './pages/admin/productPage/ProductPage';
 import ArticlePage from './pages/users/articlePage/ArticlePage';
+import ContactPage from './pages/users/contactPage/ContactPage';
 
 
 
@@ -25,6 +26,8 @@ const RenderUserRoutes = () => {
         { path: ROUTERS.USER.SHOPPINGCART, component: <ShoppingCartPage /> },
         { path: ROUTERS.USER.CHECKOUT, component: <CheckOutPage /> },
         { path: ROUTERS.USER.Article, component: <ArticlePage /> },
+        { path: ROUTERS.USER.CONTACT, component: <ContactPage /> },
+
 
     ];
 

@@ -8,7 +8,8 @@ export const ROUTERS = {
         PRODUCT: "/san-pham/chi-tiet/:id",
         SHOPPINGCART: "/gio-hang",
         CHECKOUT: "/thanh-toan",
-        Article: "/bai-bao"
+        Article: "/bai-bao",
+        CONTACT: "/lien-he",
 
 
     },

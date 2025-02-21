@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 export const getOrCreateUserId = () => {
   let userId = localStorage.getItem('userId');
   if (!userId) {
-    userId = uuidv4(); // Tạo UUID mới
-    localStorage.setItem('userId', userId); // Lưu vào localStorage
+    userId = uuidv4();
+    localStorage.setItem('userId', userId);
   }
   return userId;
 };

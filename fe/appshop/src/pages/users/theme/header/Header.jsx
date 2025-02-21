@@ -35,7 +35,7 @@ const Header = () => {
   const [isHome, setIsHome] = useState(location.pathname.length<=1);
   const [isShowCategories, setIsShowCategories] = useState(isHome);
   const cartItems = useSelector((state) => state.cart.items);
-  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const totalQuantity = (cartItems ?? []).reduce((total, item) => total + item.quantity, 0);
   const [menus, setMenus] = useState([ 
     {
       name: "Trang chủ",
@@ -170,7 +170,7 @@ const Header = () => {
       </div>
 
       <div className="container">
-        <div className="row">
+        <div className="row pst-fl">
           <div className="col-lg-3">
             <div className="header__logo ml-40">
               <h2>GreenMart Shop</h2>

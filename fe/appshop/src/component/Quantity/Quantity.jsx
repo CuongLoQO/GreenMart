@@ -2,8 +2,6 @@ import { useLocation } from "react-router-dom";
 import "./quantity.scss";
 
 const Quantity = ({ quantity, onIncrease, onDecrease }) => {
-    const location = useLocation();  
-    const isCartPage = location.pathname === "/gio-hang"; // Kiểm tra nếu đang ở trang giỏ hàng
 
     return (
         <div className="container-quantity">
