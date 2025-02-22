@@ -11,15 +11,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from '../../../../features/cart/cartSlice.jsx';
 
 
-// export   const categories = [
-//   "Thịt tươi",
-//   "Rau củ tươi",
-//   "Hoa quả",
-//   "Nước trái cây",
-//   "Hải sản",
-
-// ];
-
 export const categories = [
   { id: 1, name: "Thịt tươi" },
   { id: 2, name: "Hoa quả" },
